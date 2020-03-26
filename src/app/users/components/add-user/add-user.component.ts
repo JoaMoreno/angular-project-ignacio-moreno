@@ -2,7 +2,8 @@ import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { EventEmitter } from 'events';
+import { EventEmitter } from '@angular/core';
+import { UserApiI } from '../../models/user.model';
 
 @Component({
   selector: 'app-add-user',
@@ -47,7 +48,8 @@ export class AddUserComponent implements OnInit {
   save(event: Event) {
     event.preventDefault();
     if (this.form.valid) {
-      this._api.createUser(this.form.value)
+      this._api.createMyUser(this.form.value)
+      this.form.reset()
     } else {
       this.form.markAllAsTouched();
     }

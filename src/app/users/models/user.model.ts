@@ -25,4 +25,5 @@ export interface UserApiI {
     catchPhrase: string;
     bs: string;
   }
+  local?: boolean;
 }

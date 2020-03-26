@@ -2,7 +2,12 @@
     <a (click)='goBack()' class="btn btn-light mt-3 text-muted">Back</a>
     <div class="grid-container mt-3 mb-5 mx-auto card p-5">
         <div>
-            <h2 class="mb-3 mt-n2">{{user.name}} </h2>
+            <div class="mb-3 mt-n2 d-flex">
+                <h2>{{user.name}} </h2>
+                <small *ngIf="user.local" class="text-warning ml-3">
+                    Local
+                </small>
+            </div>
             <small class="text-muted">Username</small>
             <p>{{user.username}}</p>
             <small class="text-muted">Email</small>

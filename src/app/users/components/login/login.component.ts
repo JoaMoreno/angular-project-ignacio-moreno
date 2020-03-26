@@ -42,11 +42,8 @@ export class LoginComponent implements OnInit {
       /** Peticion y retorno del Observable */
       this._api.login(this.form.value)
         .subscribe(
-          res => {
-            console.log("[res]", res.msg);
-          },
+          res => {},
           err => {
-            console.log("[error]", err.msg);
             this.msg = err.msg;
             this.setInvalid();
           },

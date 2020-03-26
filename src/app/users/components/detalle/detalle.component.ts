@@ -25,7 +25,7 @@ export class DetalleComponent implements OnInit {
     this._api.getUser().subscribe(
       res => (this.user = res),
       /** En caso de que el usuario no exista o se ingrese otra url */
-      () => this.router.navigateByUrl("/error")
+      () => this.router.navigateByUrl("/usuarios")
     );
   }
 

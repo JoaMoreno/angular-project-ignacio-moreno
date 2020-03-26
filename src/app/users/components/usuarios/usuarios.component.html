@@ -17,8 +17,9 @@
     </div>
     <div class="grid-container mb-5 mt-4 mx-0">
         <div *ngFor='let user of users' class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between">
                 <h6 class="pt-1"> {{ user.name }}</h6>
+                <small *ngIf="user.local" class="text-warning"><i class="fas fa-star"></i></small>
             </div>
             <div class="card-body flex-between">
                 <div>
