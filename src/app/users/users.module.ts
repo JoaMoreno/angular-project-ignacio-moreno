@@ -12,13 +12,12 @@ import { UserService } from './services/user.service';
 
 // Modules
 import { SharedModule } from '../shared/shared.module';
-import { HomeComponent } from './components/home/home.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, UsuariosComponent, DetalleComponent, HomeComponent, AddUserComponent],
+  declarations: [LoginComponent, UsuariosComponent, DetalleComponent, AddUserComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

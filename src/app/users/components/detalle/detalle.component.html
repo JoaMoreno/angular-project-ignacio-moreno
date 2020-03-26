@@ -1,12 +1,15 @@
 <app-layout>
     <a (click)='goBack()' class="btn btn-light mt-3 text-muted">Back</a>
-    <div class="grid-container mt-3 mb-5 mx-auto card p-5">
+    <div class="grid-container mt-3 mb-5 mx-auto card p-4">
         <div>
-            <div class="mb-3 mt-n2 d-flex">
+            <div class="mb-3 d-flex justify-content-between">
                 <h2>{{user.name}} </h2>
                 <small *ngIf="user.local" class="text-warning ml-3">
                     Local
                 </small>
+                <div class="mr-5">
+                    <img src="https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814049_960_720.png" alt="">
+                </div>
             </div>
             <small class="text-muted">Username</small>
             <p>{{user.username}}</p>
@@ -17,7 +20,7 @@
             <small class="text-muted">Website</small>
             <p>{{user.website}} </p>
             <small class="text-muted">id</small>
-            <p>{{user.id}}</p>
+            <p>{{user.id}}</p>    
         </div>
         <div>
             <div>

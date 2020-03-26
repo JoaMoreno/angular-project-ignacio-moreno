@@ -20,6 +20,13 @@ export class UserService {
 
   constructor(private _http: HttpClient) {}
 
+  /**
+   * getUsers()
+   * Retorna un array que es la unio de allUsers,
+   * que son los datos obtenidos por la api, myUsers,
+   * que son los usuarios creados por la app.
+   * Luego emite allUsers hacia los componentes subscritos.
+   */
   getUsers() {
     this._http.get<UserApiI[]>(this.URL).subscribe(
       res => {
@@ -30,6 +37,13 @@ export class UserService {
     );
   }
 
+  /** 
+   * createMyUser()
+   * Obtiene el usuario creado, le asigna un ID y lo
+   * almacena, tanto el allUsers, que es lo que se renderiza actualmente,
+   * como en myUsers, donde se almacenan localmente los usuarios creados.
+   * Luego emite allUsers hacia los componentes subscritos.
+   */
   createMyUser(user: UserApiI) {
     user.id = this.allUsers.length + 1;
     user.local = true;
@@ -39,7 +53,8 @@ export class UserService {
   }
 
   /**
-   * La funcion login() retorna un observable que compara el usuario y contraseña
+   * login()
+   * Retorna un observable que compara el usuario y contraseña
    * que recibe con las de prueba, si estas coinciden, se completa en 1,5s.
    * Los setTimeout son para simular el delay de la peticion
    */
@@ -63,6 +78,11 @@ export class UserService {
     return obs$;
   }
 
+  /** 
+   * serUser() & getUser()
+   * Guarda y retorna, respectivamente
+   * @param user El usuario a mostrar en la vista "detalle"
+   */
   setUser(user: UserApiI) {
     this.currentUser = user;
   }

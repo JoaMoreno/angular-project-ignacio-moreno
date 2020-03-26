@@ -35,11 +35,11 @@ export class LoginComponent implements OnInit {
   send(event: Event) {
 
     event.preventDefault();
+    
     this.loading = true;
     this.msg = undefined;
 
     if (this.form.valid) {
-      /** Peticion y retorno del Observable */
       this._api.login(this.form.value)
         .subscribe(
           res => {},

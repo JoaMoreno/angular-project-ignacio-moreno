@@ -2,7 +2,10 @@
     display: grid;
     grid-template-columns: repeat(2,1fr);
 }
-
+img{
+    width: 100px;
+    border-radius: 50%;
+}
 @media (max-width: 768px) {
     .grid-container{
         grid-template-columns: 1fr;
