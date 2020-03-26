@@ -1,0 +1,47 @@
+<app-layout>
+    <a (click)='goBack()' class="btn btn-light mt-3 text-muted">Back</a>
+    <div class="grid-container mt-3 mb-5 mx-auto card p-5">
+        <div>
+            <h2 class="mb-3 mt-n2">{{user.name}} </h2>
+            <small class="text-muted">Username</small>
+            <p>{{user.username}}</p>
+            <small class="text-muted">Email</small>
+            <p>{{user.email}} </p>
+            <small class="text-muted">Phone</small>
+            <p>{{user.phone}} </p>
+            <small class="text-muted">Website</small>
+            <p>{{user.website}} </p>
+            <small class="text-muted">id</small>
+            <p>{{user.id}}</p>
+        </div>
+        <div>
+            <div>
+                <h6 class="mb-3">Address</h6>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <small class="text-muted">Street</small>
+                        <p>{{user.address.street}} </p>
+                        <small class="text-muted">Suite</small>
+                        <p>{{user.address.suite}} </p>
+                    </div>
+                    <div class="pr-4">
+                        <small class="text-muted">City</small>
+                        <p>{{user.address.city}} </p>
+                        <small class="text-muted">Zipcode</small>
+                        <p>{{user.address.zipcode}} </p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <h6 class="mb-3">Company</h6>
+                <small class="text-muted">Name</small>
+                <p>{{user.company.name}} </p>
+                <small class="text-muted">Catch Phrase</small>
+                <p class="font-italic">"{{user.company.catchPhrase}}"</p>
+                <small class="text-muted">BS</small>
+                <p>{{user.company.bs}}</p>
+            </div>
+        </div>
+    </div>
+</app-layout>

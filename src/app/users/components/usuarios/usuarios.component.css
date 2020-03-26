@@ -1,0 +1,24 @@
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+}
+
+/* Impide que los botones de las distintas card se desalineen */
+.flex-between{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .grid-container{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .grid-container{
+        grid-template-columns: repeat(4,1fr);
+    }
+}

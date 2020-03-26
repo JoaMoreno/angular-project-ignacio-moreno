@@ -1,0 +1,43 @@
+<app-layout>
+    <div class="mt-4">
+        <button type="button" class="btn btn-info px-5" data-toggle="modal" data-target="#addModal">
+            <i class="fas fa-plus mr-3"></i>
+            Add User
+        </button>
+    </div>
+    <div *ngIf="loading" class="d-flex justify-content-center m-5">
+        <div>
+            <div class="spinner-border text-info m-5" role="status"></div>
+            <p class="text-center">Loading</p>
+        </div>
+    </div>
+    <div *ngIf="msgError" class="text-center m-5 pt-5">
+        <h5>Ups!</h5>
+        <p>Users not found</p>
+    </div>
+    <div class="grid-container mb-5 mt-4 mx-0">
+        <div *ngFor='let user of users' class="card">
+            <div class="card-header">
+                <h6 class="pt-1"> {{ user.name }}</h6>
+            </div>
+            <div class="card-body flex-between">
+                <div>
+                    <small class="text-muted">Email</small>
+                    <p class="card-title">{{user.email}} </p>
+                    <small class="text-muted">Phone</small>
+                    <p class="card-text">{{user.phone}} </p>
+                </div>
+                <div class="d-flex justify-content-around mt-3">
+                    <button (click)='goToProduct(user)' class="btn btn-block btn-info mr-sm-2">Detail</button>
+                    <button (click)='deleteUser(user.id)' class="btn btn-light">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+        aria-hidden="true">
+            <app-add-user></app-add-user>
+    </div>
+</app-layout>
