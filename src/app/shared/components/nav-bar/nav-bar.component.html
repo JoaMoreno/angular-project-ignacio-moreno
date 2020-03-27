@@ -1,21 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark">
     <div class="container">
+      <div class="navbar-header">
         <a routerLink="/usuarios" class="navbar-brand"><i class="fas fa-address-card mr-3"></i>Contacts</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li *ngIf="!this._api.auth; else logout" class="nav-item">
-                    <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
-                </li>
-                <ng-template #logout>
-                    <li class="nav-item">
-                        <button class="btn btn-dark" (click)="salir()">Logout</button>
-                    </li>
-                </ng-template>
-            </ul>
-        </div>
+      </div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <div *ngIf="!this._api.auth; else logout">
+                <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <ng-template #logout>
+                <div >
+                    <button class="btn btn-dark" (click)="salir()">Logout</button>
+                </div>
+            </ng-template>
+        </li>
+    </ul>
     </div>
-</nav>
+  </nav>
