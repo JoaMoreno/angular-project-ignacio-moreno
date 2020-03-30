@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { UserService } from '../services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,12 @@ isValid = false;
   constructor(
     private router: Router
   ) {
-     
+
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    
-    if (route.paramMap.get('id')){
+
+    if ( route.paramMap.get('id') ){
       this.isValid = true
     }else{
       this.router.navigateByUrl("/usuarios")

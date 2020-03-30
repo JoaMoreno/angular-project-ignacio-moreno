@@ -1,6 +1,6 @@
 import { Injectable, Output } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, of, throwError } from "rxjs";
+import { Observable } from "rxjs";
 import { UserI, UserApiI } from "../models/user.model";
 import { EventEmitter } from "@angular/core";
 
@@ -12,13 +12,15 @@ export class UserService {
   currentUser: UserApiI;
   myUsers: UserApiI[] = [];
 
+  // Guards
   auth: boolean;
+  usersLength: number;
 
   @Output() userEmitter: EventEmitter<UserApiI[]> = new EventEmitter();
 
   private URL: string = "https://jsonplaceholder.typicode.com/users";
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) { this.getUsers() }
 
   /**
    * getUsers()
@@ -32,12 +34,14 @@ export class UserService {
       res => {
         this.allUsers = [...res, ...this.myUsers];
         this.userEmitter.emit(this.allUsers);
+        this.usersLength = this.allUsers.length
+        console.log('AFTER CREATED USERS',this.usersLength);
       },
       err => console.log("[ERROR]", err)
     );
   }
 
-  /** 
+  /**
    * createMyUser()
    * Obtiene el usuario creado, le asigna un ID y lo
    * almacena, tanto el allUsers, que es lo que se renderiza actualmente,
@@ -76,19 +80,5 @@ export class UserService {
     });
 
     return obs$;
-  }
-
-  /** 
-   * serUser() & getUser()
-   * Guarda y retorna, respectivamente
-   * @param user El usuario a mostrar en la vista "detalle"
-   */
-  setUser(user: UserApiI) {
-    this.currentUser = user;
-  }
-  getUser() {
-    return this.currentUser
-      ? of<UserApiI>(this.currentUser)
-      : throwError("error");
   }
 }

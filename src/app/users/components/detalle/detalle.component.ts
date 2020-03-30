@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../../services/user.service";
 import { UserApiI } from "../../models/user.model";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { Location } from '@angular/common';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: "app-detalle",
@@ -11,22 +12,19 @@ import { Location } from '@angular/common';
 })
 export class DetalleComponent implements OnInit {
   user: UserApiI;
-  constructor( 
-    private _api: UserService, 
-    private router: Router,
-    private location: Location) {
-      this.getUser()
-    }
+  constructor(
+    private _api: UserService,
+    private activatedRoute: ActivatedRoute,
+    private location: Location) {}
 
   ngOnInit(): void {
+    this.newGetUser()
   }
 
-  getUser(){
-    this._api.getUser().subscribe(
-      res => (this.user = res),
-      /** En caso de que el usuario no exista o se ingrese otra url */
-      () => this.router.navigateByUrl("/usuarios")
-    );
+  newGetUser(){
+    this.activatedRoute.paramMap
+    .pipe(pluck<ParamMap, number>("params","id") )
+    .subscribe( res => this.user = this._api.allUsers[res] )
   }
 
   goBack(): void {

@@ -27,20 +27,13 @@ export class UsuariosComponent implements OnInit {
     )
   }
 
-  goToProduct(user: UserApiI) {
-    this._api.setUser(user);
-    this.router.navigate(["/detalle/", user.id]);
+  goToProduct(index: number) {
+    this.router.navigate(["/detalle/", index]);
   }
 
-  deleteUser(id) {
-    for (let i = 0; i < this.users.length; i++) {
-      const element = this.users[i];
-      if (element.id === id) {
-        this.users.splice(i, 1);
-        if (this.users.length < 1) this.msgError = true;
-        break;
-      }
-    }
+  deleteUser(index) {
+    this.users.splice(index, 1);
+    if (this.users.length < 1) this.msgError = true;
   }
 
   // Auxiliary Functions

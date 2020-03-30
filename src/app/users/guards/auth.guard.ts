@@ -23,11 +23,11 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (!this._api.auth) {
-      alert("No estas logueado");
-      this.router.navigateByUrl("/login");
-    } else {
+    if (this._api.auth) {
       return true;
+    } else {
+      alert("No estas logueado");
+      this.router.navigate(["/login"]);
     }
   }
 }
